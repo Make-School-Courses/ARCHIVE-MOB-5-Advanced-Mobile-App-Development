@@ -61,4 +61,4 @@ In your application targets -> “General” settings tab, in the “Linked Fram
 - Gloss or any other json parsing library
 
 
-# Next - [Distributing Information](04-Distributing-Information/distributing-information.md)
+# Next - [Distributing Information](../04-Distributing-Information/distributing-information.md)

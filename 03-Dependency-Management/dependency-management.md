@@ -153,4 +153,4 @@ Carthage and Cocoapods and SwiftPackageManager are the most popular ones.
 [SwiftPackageManger Website](https://swift.org/package-manager/)
 
 
-# Next - [Dependency Manager Setup](03-Dependency-Management/dependency-manager-setup.md)
+# Next - [Dependency Manager Setup](dependency-manager-setup.md)
