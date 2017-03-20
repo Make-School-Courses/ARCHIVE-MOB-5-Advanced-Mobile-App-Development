@@ -152,27 +152,26 @@ representation
 
 ```swift
 class Movie: NSObject, NSCoding {
- var title: String
- var duration: Int
+    var title: String
+    var duration: Int
 
- init(title: String, duration: Int) {
- self.title = title
- self.duration = duration
- }
+    init(title: String, duration: Int) {
+        self.title = title
+        self.duration = duration
+    }
 
- required convenience init?(coder aDecoder: NSCoder) {
- guard let title = aDecoder.decodeObjectForKey("title") as? String,
- let duration = aDecoder.decodeObjectForKey("duration") as? Int
- else { return nil }
+    required convenience init?(coder aDecoder: NSCoder) {
+        guard let title = aDecoder.decodeObjectForKey("title") as? String,
+        let duration = aDecoder.decodeObjectForKey("duration") as? Int
+        else { return nil }
 
- self.init(title: title, duration: duration)
- }
+        self.init(title: title, duration: duration)
+    }
 
- func encodeWithCoder(coder: NSCoder) {
- coder.encodeObject(self.title, forKey: "title")
- coder.encodeObject(self.duration, forKey: "duration")
- }
-
+    func encodeWithCoder(coder: NSCoder) {
+        coder.encodeObject(self.title, forKey: "title")
+        coder.encodeObject(self.duration, forKey: "duration")
+    }
 }
 ```
 

@@ -186,17 +186,15 @@ Used for information propagation within an instance
 
 ```swift
 class UserViewController: UIViewController {
+     var label: UILabel!
 
- var label: UILabel!
-
- var user: User? {
- didSet {
- if let label = label, let user = user {
- label.text = user.name
- }
- }
- }
-
+     var user: User? {
+         didSet {
+             if let label = label, let user = user {
+                label.text = user.name
+             }
+         }
+     }
  }
  ```
  
@@ -219,29 +217,30 @@ Think: property observers for other objects
 ```swift
 class Observer: NSObject {
 
- var user: User
+    var user: User
 
- init(user: User) {
- self.user = user
+    init(user: User) {
+        self.user = user
 
- super.init()
+        super.init()
 
- self.user.addObserver(self, forKeyPath: "name", options: NSKeyValueObservingOptions.New, context: nil)
- }
+        self.user.addObserver(self, forKeyPath: "name", options: NSKeyValueObservingOptions.New, context: nil)
+    }
+}
 
  override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context:
 UnsafeMutablePointer<Void>) {
- if let newValue = change?[NSKeyValueChangeNewKey] {
- print("Name changed: \(newValue)")
- } else {
- super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
- }
- }
 
- deinit {
- self.user.removeObserver(self, forKeyPath: "name")
- }
+    if let newValue = change?[NSKeyValueChangeNewKey] {
+        print("Name changed: \(newValue)")
+    } else {
+        super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+    }
+    
 
+    deinit {
+        self.user.removeObserver(self, forKeyPath: "name")
+    }
 }
 ```
 

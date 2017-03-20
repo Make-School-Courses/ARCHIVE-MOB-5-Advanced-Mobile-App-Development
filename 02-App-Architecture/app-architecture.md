@@ -95,11 +95,15 @@ class AnswerCell: UICollectionViewCell {
     @IBOutlet var questionLabel: UITextField!
 }
 
-let answer = Answer()
+func cellForItem(at indexPath: IndexPath) -> UICollectionViewCell? {
+    //....
+    let answer = Answer()
 
-answerCell.nameLabel.text = "\(answer.sender.firstName)" + "\(answer.sender.lastName)"
-answerCell.questionLabel.text = answer.question.content
+    answerCell.nameLabel.text = "\(answer.sender.firstName)" + "\(answer.sender.lastName)"
+    answerCell.questionLabel.text = answer.question.content
+    //...
 ```
+
 
 Whoever owns the answerCell now knows about the nameLabel and questionLabel of the answerCell
 

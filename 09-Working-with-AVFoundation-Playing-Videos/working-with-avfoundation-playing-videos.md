@@ -15,7 +15,7 @@ AVPlayer plays a single asset
 Typically display the video from playback to a Core Animation layer
 You synchronize the video playback on an AVPlayerLayer or AVSynchronizedLayer
 
-#### Displaying Video
+### Displaying Video
 
 There are two ways of displaying video onto the screen
 
@@ -41,7 +41,7 @@ self.layer is now an AVPlayerLayer
 
 ** AVSynchronizedLayer** - A special CALayer that can synchronizes timing with an AVPlayer. Eg. Rendering subtitles on a video
 
-#### Playing an Asset
+### Playing an Asset
 
 To play an asset, an AVPlayerItem is passed to the AVPlayer for playback
 
@@ -56,7 +56,7 @@ let avPlayer = AVPlayer(item: playerItem)
 
 ![AVPlayer](avplayer-player-items.png)
 
-#### Controlling playback
+### Controlling playback
 
 Controlling playback of an asset is done by changing the playback rate.
 The playback rate controls the rate of play of the playeritem.
@@ -64,7 +64,7 @@ Set the playback rate to 0 to pause, set it to 1 to play, setting it to 2 plays 
 You can also use the play() and pause() functions on AVPlayer, it changes the playback rate under the hood.
 
 
-#### Playing multiple items with AVQueuePlayer
+### Playing multiple items with AVQueuePlayer
 
 Its a subclass of AVPlayer that allows you to play multiple items in sequence
 
@@ -75,13 +75,13 @@ let queuePlayer = AVQueuePlayer(items: playerItems)
 
 AVQueuePlayer plays items in turn, if you want to move to the next item, use the advanceToNextItem() on AVQueuePlayer
 
-#### Looping a playback item with AVPlayerLooper
+### Looping a playback item with AVPlayerLooper
 
 AVPlayerLooper loops a playback item.
 You can do that manually by seeking the time to the beginning when the playback items ends, but AVPlayerLooper provides a better interface for looping an item
 
 
-#### Monitoring Playback
+### Monitoring Playback
 
 Monitoring playback on AVPlayer primarily uses KVO
 
@@ -102,7 +102,7 @@ override func observeValue(forKeyPath keyPath: String?, of object: Any?, change:
         }
     }
 ```
-##### Tracking time
+### Tracking time
 
 AVPlayer provides two methods to observe time changes:
 

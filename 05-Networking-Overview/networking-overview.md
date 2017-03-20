@@ -43,15 +43,16 @@ Class is poorly suited for Swift
 ```swift
 let jsonOptional: AnyObject! = NSJSONSerialization.JSONObjectWithData(data,
 options: NSJSONReadingOptions(0), error: &jsonErrorOptional)
+
 if let json = jsonOptional as? Dictionary<String, AnyObject> {
- if let id = json["id"] as? Int {
- if let name = json["name"] as AnyObject? as? String {
- if let email = json["email"] as AnyObject? as? String {
- let user = User(id: id, name: name, email: email)
- callback(user)
- }
- }
- }
+    if let id = json["id"] as? Int {
+        if let name = json["name"] as AnyObject? as? String {
+            if let email = json["email"] as AnyObject? as? String {
+                let user = User(id: id, name: name, email: email)
+                callback(user)
+            }
+        }
+    }
 }
 ```
 😞
@@ -134,4 +135,4 @@ libraries
 abstractions over NSURLSession
 
 
-# Next - [Layout Essentials](06-Layout-Essentials/layout-essentials.md)
+# Next - [Layout Essentials](../06-Layout-Essentials/layout-essentials.md)
