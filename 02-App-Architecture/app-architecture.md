@@ -122,4 +122,4 @@ Whoever owns the answerCell now knows about the nameLabel and questionLabel of t
 [Protocol Oriented Programming](https://realm.io/news/appbuilders-natasha-muraschev-practical-protocol-oriented-programming/)
 
 
-# Next [Dependency - Management](03-Dependency-Management/dependency-management.md)
+# Next [Dependency - Management](../03-Dependency-Management/dependency-management.md)
