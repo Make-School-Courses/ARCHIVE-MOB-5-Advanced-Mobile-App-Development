@@ -33,3 +33,20 @@ The goal of this class is to build a video Q&A app modeled after the Whale iOS A
 - #### Week 5
     - Project completion/ wrap-up
  
+ ## API Endpoints
+
+| Resource                         | Endpoint                                                                     | Get URL Parameters      | Post Body                                                   | Post Body Type | Needs Authorization Header |
+|----------------------------------|------------------------------------------------------------------------------|-------------------------|-------------------------------------------------------------|----------------|----------------------------|
+| User                             | https://whale2-elixir.herokuapp.com/api/v1/users                             |                         |                                                             | JSON           |                            |
+| Session (Current logged in user) | https://whale2-elixir.herokuapp.com/api/v1/sessions                          |                         |                                                             |                | True                       |
+|                                  | https://whale2-elixir.herokuapp.com/api/v1/answers                           | per_page: Int page: Int |                                                             |                | True                       |
+| Question                         | https://whale2-elixir.herokuapp.com/api/v1/questions                         | per_page: Int page: Int | receiver_id: Int  content: String                           | JSON           | True                       |
+| Answer a Question                | https://whale2-elixir.herokuapp.com/api/v1/questions/**question_id**/answers |                         | video: Video File(.mov)  thumbnail: Image File(.jpeg, .png) | Multipart      | True                       |
+| (Answer) Comment                 | https://whale2-elixir.herokuapp.com/api/v1/answers/**answer_id**/comments    | per_page: Int page: Int | comment: String                                             | JSON           | True                       |
+| (Answer) Like                    | https://whale2-elixir.herokuapp.com/api/v1/answers/**answer_id**/likes       | per_page: Int page: Int |                                                             | JSON           | True                       |
+
+
+## Sample PAW & Postman files
+#### Paw File - [Link](Whale.paw)
+
+#### Postman File [Link](Whale.postman_collection.json)
