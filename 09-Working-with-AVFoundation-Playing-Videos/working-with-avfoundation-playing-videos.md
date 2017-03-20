@@ -106,7 +106,11 @@ override func observeValue(forKeyPath keyPath: String?, of object: Any?, change:
 
 AVPlayer provides two methods to observe time changes:
 
-To track the current time of the current playback item, you use the addPeriodicTimeObserver(forInterval:queue:using:)
+To track the current time of the current playback item, you use the 
+
+```swift
+addPeriodicTimeObserver(forInterval:queue:using:)
+```
 
 You must pass in a serial queue, concurrent queues are not supported
 Use this to display, time elapsed, remaining
