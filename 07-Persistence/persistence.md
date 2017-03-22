@@ -10,7 +10,7 @@
 
 ## UserDefaults
 
-NSUserDefaults allows to store Strings, Numbers, Dates, NSData and
+UserDefaults allows to store Strings, Numbers, Dates, NSData and
 Arrays or Dictionaries
 
 Usually should be used to store user preferences, can be used to store small amount of persistent information
@@ -18,7 +18,11 @@ Usually should be used to store user preferences, can be used to store small amo
 Should never be used for sensitive data
 
 ```swift
-NSUserDefaults.standardUserDefaults().setBool(false, forKey: "UserAccountCreated")
+// Set
+UserDefaults.standard.set(false, forKey: "FirstTimeUser")
+
+// Get
+let value = UserDefaults.standard.bool(forKey: "FirstTimeUser")
 ```
 
 ## Keychain
@@ -28,11 +32,12 @@ Is used to store sensitive information, such as passwords
 All information is stored encrypted
 
 Apple’s API is arcane - Open Source Libraries such as
-SSKeychain will make your life easier!
+KeychainSwift will make your life easier!
 
 ## Filesystem
 
 Apps can only read/write files within their sandbox
+![App structure](app-structure.png)
 
 ### Important Directories
 
@@ -42,8 +47,7 @@ Apps can only read/write files within their sandbox
 
 This is the main bundle of the App. 
 
-All of the content of this
-folder is created at compile time (based on files added in
+All of the content of this folder is created at compile time (based on files added in
 Xcode) and cannot be modified at runtime!
 
 Bundle contains binary along with resource files
@@ -61,14 +65,14 @@ This directory is backed up with iTunes Backups and it can be
 made available to iTunes users via Filesharing
 
 ```swift
-<Application_Home>/Library/tmp
+<Application_Home>/tmp
 ```
 
-Use this to store files that you do need to to persist
+Use this to store files that you do not need to persist
 permanently.
 
 You are responsible for removing files from this
-directory when they are no longer needed
+directory when they are no longer needed.
 
 All files in the Library directory (excluding the Library/Caches
 directory) are backed up to iTunes by default. You can change
@@ -90,9 +94,9 @@ The content of this folder is not backed up to iTunes
 ### Accessing files
 Accessing files within the application bundle:
 ```swift
-let path = NSBundle.mainBundle().pathForResource("file1", ofType: ".jpg")
+let path = Bundle.main.path(forResource: "file1", ofType: ".jpg")
 if let path = path {
-    let image = UIImage(contentsOfFile:path)
+    let image = UIImage(contentsOfFile: path)
 }
 ```
 Short form:`
@@ -102,15 +106,14 @@ UIImage(named: "file1.jpg")
 
 #### Accessing files within the documents directory:
 ```swift
-let fileManager = NSFileManager.defaultManager()
-let urls = fileManager.URLsForDirectory(.DocumentDirectory,
-inDomains: .UserDomainMask)
+let fileManager = FileManager.default
+let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
 
-if let documentDirectory: NSURL = urls.first {
-    let documentURL = documentDirectory.URLByAppendingPathComponent("txtFile.txt")
+if let documentDirectory: URL = urls.first {
+    let documentURL = documentDirectory.appendingPathComponent("txtFile.txt")
     do {
         let content = try String(contentsOfURL: documentURL)
-    } catch let error as NSError {
+    } catch let error {
         print(error.localizedDescription)
     }
 }
@@ -121,23 +124,22 @@ if let documentDirectory: NSURL = urls.first {
 Writing a file to the documents directory:
 
 ```swift
-let fileManager = NSFileManager.defaultManager()
-let urls = fileManager.URLsForDirectory(.DocumentDirectory,
-inDomains: .UserDomainMask)
+let fileManager = FileManager.default
+let urls = fileManager.urls(for: .documentDirectory,
+in: .userDomainMask)
 
-if let documentDirectory: NSURL = urls.first {
-    let documentURL = documentDirectory.URLByAppendingPathComponent("txtFile.txt")
+if let documentDirectory: URL = urls.first {
+    let documentURL = documentDirectory.appendingPathComponent("txtFile.txt")
     // data you want to write to file
-    let data = NSData()
-    data.writeToURL(documentURL, atomically: true)
+    let data = Data()
+    data.write(to: documentURL, options: .atomic)
 }
 ```
 
 ### When to use filesystem
 
-- Primarily when storing/caching binary data such as images
-- Can also be used to store serialized Objects, allows to persist
-- Objects and Object Graphs from your application
+- Primarily when storing/caching binary data such as images/ audio/ video
+- Can also be used to store serialized Objects, allows to persist objects and Object Graphs from your application
 
 ## Encoding/Decoding
 
@@ -154,25 +156,26 @@ representation
 class Movie: NSObject, NSCoding {
     var title: String
     var duration: Int
-
+    
     init(title: String, duration: Int) {
         self.title = title
         self.duration = duration
     }
-
+    
     required convenience init?(coder aDecoder: NSCoder) {
-        guard let title = aDecoder.decodeObjectForKey("title") as? String,
-        let duration = aDecoder.decodeObjectForKey("duration") as? Int
-        else { return nil }
-
+        guard let title = aDecoder.decodeObject(forKey: "title") as? String
+            else { return nil }
+        let duration = aDecoder.decodeInteger(forKey: "duration")
+        
         self.init(title: title, duration: duration)
     }
-
-    func encodeWithCoder(coder: NSCoder) {
-        coder.encodeObject(self.title, forKey: "title")
-        coder.encodeObject(self.duration, forKey: "duration")
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.title, forKey: "title")
+        aCoder.encode(self.duration, forKey: "duration")
     }
 }
+
 ```
 
 ### Step 2: User Archiver
@@ -197,13 +200,14 @@ If you additionally want to create queries, need migrations,
 etc, there are better solutions (e.g., CoreData)
 
 ## Advanced Persistence Technologies
+
 ##### Core Data, Realm, SQLite
 - Querying / selecting a subset of object graph
 - Saving individual objects independent of entire graph
 - Simple versioning of data model
 
 ## Summary
-- NSUserDefaults is the easiest way to persist a small amount of
+- UserDefaults is the easiest way to persist a small amount of
 information in an application
 - Security relevant information should be stored in the Keychain
 - Apps run in a sandbox where they have access to their bundle and

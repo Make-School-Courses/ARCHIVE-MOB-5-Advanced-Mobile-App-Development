@@ -54,11 +54,15 @@ In your application targets -> “General” settings tab, in the “Linked Fram
 
 ## SwiftPackageManager
 
+>> A package consists of Swift source files and a manifest file. The manifest file, called Package.swift, defines the package’s name and its contents using the PackageDescription module. A package has one or more targets. Each target specifies a product and may declare one or more dependencies.
 
+Create a Package.swift containing all your dependencies
+
+run ```swift build```
 
 ## Libraries we are going to use
 - Kingfisher - image caching
 - Gloss or any other json parsing library
-
+- KeychainSwift
 
 # Next - [Distributing Information](../04-Distributing-Information/distributing-information.md)

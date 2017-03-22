@@ -17,7 +17,7 @@ e.g. a matrix multiplication library
 
 ## Dynamic(Shared) vs. Static Linking
 
-**Static Linking**: 
+**Static Linking**:
 
 - All dependencies are copied into the
 executable of the program at compile time
@@ -100,8 +100,7 @@ Currently the three most popular dependency managers for iOS
 
 **SwiftPackageManager** is new to iOS since Swift 3 and is maintained by Apple and the open source community
 
-- Allow you to define name of dependency and optionally a version number and will resolve dependencies of your
-decencies automatically
+- Allows you to define the name of the dependency and optionally a version number and will resolve dependencies of your decencies automatically
 
 - Provide simple commands to update to latest version of your
 dependencies
@@ -143,8 +142,6 @@ application, dynamically linked libraries are loaded at runtime.
 Carthage and Cocoapods and SwiftPackageManager are the most popular ones.
 
 ## Resources
-
-[Blog Post - Dynamic Linking](http://ddeville.me/2014/04/dynamic-linking/)
 
 [CocoaPods Website](https://cocoapods.org/)
 
