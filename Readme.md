@@ -15,12 +15,12 @@ The goal of this class is to build a video Q&A app modeled after the Whale iOS A
     - [Project Overview](01-Assigned-Project)
     - [App Architecture](02-App-architecture)
     - [Dependency Management](03-Dependency-Management)
-    - [Distributing Information](04-Distributing-Information)
+    - [Intro to persistence](04-Intro-to-Persistence)
  
 - #### Week 2
-    - [Networking Overview](05-Networking-Overview)
-    - [Layout Essentials](06-Layout-Essentials)
-    - [Intro to persistence](07-Persistence)
+    - [Distributing Information](05-Distributing-Information)
+    - [Networking Overview](06-Networking-Overview)
+    - [Layout Essentials](07-Layout-Essentials)
  
 - #### Week 3
     - [Generics - Functions, Protocols & Enums](08-Generics)
@@ -28,7 +28,7 @@ The goal of this class is to build a video Q&A app modeled after the Whale iOS A
 
 - #### Week 4
     - [Working with AVFoundation - Recording Videos](10-Working-with-AVFoundation-Recording-Videos)
-    - [Persistence - Intro to Core Data](11-Persistence-Into-to-Core-Data)
+    - [Persistence - Intro to Core Data](11-Persistence-Intro-to-Core-Data)
     
 - #### Week 5
     - Project completion/ wrap-up
@@ -39,7 +39,7 @@ The goal of this class is to build a video Q&A app modeled after the Whale iOS A
 |-------------------------|------------------------------------------------------------------------------|--------------|-----------------------------------|-----------------------------------------------------------------------------------------------------------------|-----------------|----------------------------|--------------------------------------------------------------------------------------------------------------|
 | Get Users               | https://whale2-elixir.herokuapp.com/api/v1/users                             | GET          | per_page: Intpage: Int            | -                                                                                                               | JSON            | False                      | Fetches all Users                                                                                            |
 | Create User             | https://whale2-elixir.herokuapp.com/api/v1/users                             | POST         | -                                 | email: String first_name: String last_name: String password: String username: String image_url: Optional - File | JSON/ Multipart | False                      | Creates a User. If the image_url is passed in with a file, the profile photo of the user is uploaded as well |
-| Login User              | https://whale2-elixir.herokuapp.com/api/v1/sessions                          | POST         | username: String password: String | -                                                                                                               | -               | False                      | Login a User                                                                                                 |
+| Login User              | https://whale2-elixir.herokuapp.com/api/v1/sessions                          | POST         | email: String password: String | -                                                                                                               | -               | False                      | Login a User                                                                                                 |
 | Get Answers             | https://whale2-elixir.herokuapp.com/api/v1/answers                           | GET          | per_page: Intpage: Int            | -                                                                                                               | -               | True                       | Fetches all Answers                                                                                          |
 | Get Answer Comments     | https://whale2-elixir.herokuapp.com/api/v1/answers/**answer_id**/comments    | GET          | per_page: Intpage: Int            | -                                                                                                               | -               | True                       | Fetches all comments for an Answer                                                                           |
 | Get Answer Likes        | https://whale2-elixir.herokuapp.com/api/v1/answers/**answer_id**/likes       | GET          | per_page: Intpage: Int            | -                                                                                                               | -               | True                       | Fetches all likes for an Answer                                                                              |

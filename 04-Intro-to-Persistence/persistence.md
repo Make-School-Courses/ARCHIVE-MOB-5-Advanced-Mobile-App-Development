@@ -217,3 +217,5 @@ different types of directories
 the state of your app and don’t need queries or migrations
 
 ## Resources
+
+# Next - [Distributing Information](../05-Distributing-Information/distributing-information.md)
