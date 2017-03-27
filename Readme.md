@@ -52,7 +52,8 @@ To pass the course, students will have:
     2. Attempted 20% of the optional features
 
 
- ## API Endpoints
+ ## Resources
+ ### API Endpoints
 
 | Resource                | Endpoint                                                                     | Request Type | URL Parameters                    | Body                                                                                                            | Body Type       | Needs Authorization Header | Description                                                                                                  |
 |-------------------------|------------------------------------------------------------------------------|--------------|-----------------------------------|-----------------------------------------------------------------------------------------------------------------|-----------------|----------------------------|--------------------------------------------------------------------------------------------------------------|
@@ -67,7 +68,7 @@ To pass the course, students will have:
 | Create Question         | https://whale2-elixir.herokuapp.com/api/v1/questions                         | POST         | -                                 | receiver_id: Intcontent: String                                                                                 | JSON            | True                       | Creates a question for a User(receiver)                                                                      |
 
 
-## Sample PAW & Postman files
-#### Paw File - [Link](Whale.paw)
+### Sample PAW & Postman files (Right-click and save)
+Paw File - [Link](Whale.paw)
 
-#### Postman File [Link](Whale.postman_collection.json)
+Postman File [Link](Whale.postman_collection.json)
