@@ -31,10 +31,11 @@ Key features:
  
 - #### Week 2
     - [Distributing Information](05-Distributing-Information)
+    - [Error Handling](00-Error-Handling)
     - [Networking Overview](06-Networking-Overview)
-    - [Layout Essentials](07-Layout-Essentials)
- 
+    
 - #### Week 3
+    - [Layout Essentials](07-Layout-Essentials)
     - [Generics - Functions, Protocols & Enums](08-Generics)
     - [Working with AVFoundation - Playing videos](09-Working-with-AVFoundation-Playing-Videos/working-with-avfoundation-playing-videos.md)
 

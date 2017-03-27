@@ -28,7 +28,6 @@ let listner = Listner()
 
 NotificationCenter.default.post(notificaton)
 
-
 // KVO
 class User: NSObject {
     dynamic var name: String
@@ -66,3 +65,13 @@ let observer = Observer(user: User(name: "Eliel"))
 observer.user.name = "Peter"
 observer.user.name = "Johnson"
 
+
+func someFunc() throws {
+    try String(contentsOfFile: "test.text", encoding: String.Encoding.utf8)
+}
+
+do {
+    try someFunc()
+} catch {
+    
+}
