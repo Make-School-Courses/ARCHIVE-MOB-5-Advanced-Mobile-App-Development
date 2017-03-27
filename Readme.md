@@ -72,3 +72,6 @@ To pass the course, students will have:
 Paw File - [Link](Whale.paw)
 
 Postman File [Link](Whale.postman_collection.json)
+
+### Icon set
+Icons - [Link](Icons.zip)
