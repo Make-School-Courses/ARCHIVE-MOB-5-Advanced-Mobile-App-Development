@@ -22,26 +22,8 @@ Each piece of code needs well defined responsibility. Eg. The code that triggers
 
 Typically used to establish a life long connection
 
-```swift
-class UserViewController: UIViewController {
+![Type-to-type](type-to-type.png)
 
- func infoButtonTapped() {
- // communicate with business logic
- }
-
-}
-
-class UserView {
-
- weak var userViewController: UserViewController?
-
- func infoButtonTapped() {
-    userViewController?.infoButtonTapped()
- }
-
-}
-
-```
 
 **Tight coupling!**
 
@@ -94,6 +76,8 @@ Indirection = looser coupling
 ## Closures
 Typically used for short lived relationships 
 
+![Closures](closures.png)
+
 **Pros:**
     - Decouples communication
     - Provides a communication interface with only a single
@@ -105,14 +89,16 @@ Typically used for short lived relationships
 ## Notifications & NotificationCenter
 Notifications allow us to broadcast information (1 to N) 
 Sender has no information about which objects have subscribed to notifications
+This communication pattern is based of the Observer pattern.
+In the observer pattern, we have an object called a **Subject**, this subject maintains a list of dependencies known as **Observers** which are notified when state changes.
 
 ### Posting a notification
 ```swift
-func synchronize() {
-     // network request
-     NSNotificationCenter.defaultCenter().postNotificationName("MyApp.SynchronizationCompleted", object: self)
- }
- 
+let PostCompleted = "postCompleted"
+let PostNotification = Notification.Name(rawValue: PostCompleted)
+let notificaton = Notification(name: PostNotification)
+
+NotificationCenter.default.post(notificaton)
 ```
 
 - Notifications are delivered on the same thread on which they are posted!
@@ -121,22 +107,25 @@ func synchronize() {
 ### Registering for Notifications
 
 ```swift
-class Listener {
+// Option 1
+class Listner {
     init() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "syncComplete", name: nil, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(Listner.notified(notificaton:)), name: PostNotification, object: nil)
     }
+    
+    @objc func notified(notificaton: Notification) {
+        print(notificaton)
+    }
+}
 
-    @objc func syncComplete() {
-        // work
-        print("ok")
-    }
+// Options 2
+NotificationCenter.default.addObserver(forName: PostNotification, object: nil, queue: nil) { (not) in
+    print(not)
 }
 ```
 
-- Specify which notification you want to
-listen to
-- Specify which method on which object
-should be called once this notification
+- Specify which notification you want to listen to
+- Specify which method on which object should be called once this notification
 occurs
 - Mark the target method with @objc if you are not subclassing from an Objective-C object
 
@@ -144,16 +133,14 @@ occurs
 
 - Don’t forget to unsubscribe!
 
-If a deallocated object is registered
-with the notification center, your app
-will crash on an attempt to deliver a
-notification to the dead object
+If a deallocated object is registered with the notification center, your app will crash on an attempt to deliver a
+notification to the dead object.
 
 ```swift
 class Listener {
 
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
  //…
 }
@@ -163,8 +150,8 @@ class UserViewController: UIViewController {
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
 
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-        }
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 ```
 
@@ -181,8 +168,8 @@ class UserViewController: UIViewController {
 
 ## Property Observers
 
-Implicitly propagate changes within an instance of a type
-Used for information propagation within an instance 
+Implicitly propagate changes within an instance of a type.
+Used for information propagation within an instance.
 
 ```swift
 class UserViewController: UIViewController {
@@ -214,34 +201,49 @@ an observed object changes
 
 Think: property observers for other objects
 
+To use KVO with swift you need to implement these steps:
+1. The Object you are going to observe needs to inherit from NSObject
+2. Add the dynamic keyword to the observed property
+3. The object observing property changes needs add itself to the list observers
+4. Override the observeValue(for:of:change:context:) method
+5. Remove the observer in deinit()
+
 ```swift
-class Observer: NSObject {
-
-    var user: User
-
-    init(user: User) {
-        self.user = user
-
-        super.init()
-
-        self.user.addObserver(self, forKeyPath: "name", options: NSKeyValueObservingOptions.New, context: nil)
+class User: NSObject {
+    dynamic var name: String
+    
+    init(name: String) {
+        self.name = name
     }
 }
 
- override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context:
-UnsafeMutablePointer<Void>) {
-
-    if let newValue = change?[NSKeyValueChangeNewKey] {
-        print("Name changed: \(newValue)")
-    } else {
-        super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+class Observer: NSObject {
+    var user: User
+    
+    init(user: User) {
+        self.user = user
+        super.init()
+        
+        self.user.addObserver(self, forKeyPath: "name", options: NSKeyValueObservingOptions.new, context: nil)
     }
     
-
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+        if let newValue = change?[NSKeyValueChangeKey.newKey] {
+            print("Name changed: \(newValue)")
+        } else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
+    }
+    
     deinit {
         self.user.removeObserver(self, forKeyPath: "name")
     }
 }
+
+let observer = Observer(user: User(name: "Eliel"))
+observer.user.name = "Peter"
+observer.user.name = "Johnson"
 ```
 
 - **Pros:**
@@ -254,10 +256,18 @@ UnsafeMutablePointer<Void>) {
     - Not available on Swift classes, need to inherit from NSObject and
     use the dynamic keyword
     
-
 Swift doesn’t have it’s own KVO mechanism, but there are third party alternatives and it’s easy to implement your own KVO alternative
 
-Example frameworks include Bond, RxSwift, ReactiveCocoa
+## Alternatives
+
+A typical iOS project will end up using more than one of the above communication patterns.
+Frameworks like **Bond, RxSwift, ReactiveCocoa** reduce communication into a simple interface.
+
+## Brainstorm
+
+1. Building Whale, when will we use Delegation, Closures, NotificationCenter and KVO?
+2. What are some of the problems with using NotificationCenter to distribute information across our app?
+3. What is the main problem with using Closures in swift?
 
 ## Summary
 
@@ -268,6 +278,9 @@ Example frameworks include Bond, RxSwift, ReactiveCocoa
 - Bindings / Key Value Observation
 
 ## Resources
+
+[Playgrounds of KVO and NotificationCenter](distributing-information.playground)
+
 [NotificationCenter Apple](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSNotificationCenter_Class/)
 
 [Swift Property Observers](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Properties.html#//apple_ref/doc/uid/TP40014097-CH14-ID262)
@@ -277,6 +290,5 @@ Example frameworks include Bond, RxSwift, ReactiveCocoa
 [RxSwift](https://github.com/ReactiveX/RxSwift)
 
 [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa)
-
 
 # Next - [Networking Overview](../06-Networking-Overview/networking-overview.md)

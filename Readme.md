@@ -1,15 +1,27 @@
-# End-To-End iOS Development
+# End-to-End iOS Development
+
+## Course Overview
 
 The goal of this class is to build a video Q&A app modeled after the Whale iOS App. We will focus on building only a subset of features of the Whale app, with a focus on **netwoking**, **architecture** and a bit of fun with video with **AVFoundation**. 
 
-## Objectives
+## Objectives & Competencies
 
-- Build an iOS app from an API specification
-- Use AVFoundation to play, record and save videos & photos
-- Leverage advanced Swift features to architect your app
-- Build common app features like networking, authentication, pagination
+1. Build an iOS app from an API specification
+2. Use AVFoundation to play, record and save videos & photos
+3. Leverage advanced Swift features to architect your app
+4. Build common app features like networking, authentication, pagination
 
-## Course Outline
+### Spec Project
+
+Key features:
+1. Download JSON, Images and Video and display them
+2. Work with AVFoundation to play, edit and save video and images
+3. Manage and use multiple dependencies in your project
+4. Add pagination for a seamless user experience
+5. Use multiple persistence technologies(Keychain, UserDefaults, CoreData) to save user data
+
+
+## Course Schedule
 
 - #### Week 1
     - [Project Overview](01-Assigned-Project)
@@ -24,15 +36,22 @@ The goal of this class is to build a video Q&A app modeled after the Whale iOS A
  
 - #### Week 3
     - [Generics - Functions, Protocols & Enums](08-Generics)
-    - [Working with AVFoundation - Playing videos](09-Working-with-AVFoundation-Playing-Videos)
+    - [Working with AVFoundation - Playing videos](09-Working-with-AVFoundation-Playing-Videos/working-with-avfoundation-playing-videos.md)
 
 - #### Week 4
-    - [Working with AVFoundation - Recording Videos](10-Working-with-AVFoundation-Recording-Videos)
+    - [Working with AVFoundation - Recording Videos](10-Working-with-AVFoundation-Recording-Videos/avfoundation-recording-videos.md)
     - [Persistence - Intro to Core Data](11-Persistence-Intro-to-Core-Data)
     
 - #### Week 5
     - Project completion/ wrap-up
  
+ ## Evaluations
+To pass the course, students will have:
+
+    1. Finished the baseline features of the project
+    2. Attempted 20% of the optional features
+
+
  ## API Endpoints
 
 | Resource                | Endpoint                                                                     | Request Type | URL Parameters                    | Body                                                                                                            | Body Type       | Needs Authorization Header | Description                                                                                                  |

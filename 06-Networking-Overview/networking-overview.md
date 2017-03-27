@@ -40,23 +40,6 @@ The authentication token is then used for subsequent requests that require authe
 Foundation framework provides NSJSONSerialization
 Class is poorly suited for Swift
 
-```swift
-let jsonOptional: AnyObject! = NSJSONSerialization.JSONObjectWithData(data,
-options: NSJSONReadingOptions(0), error: &jsonErrorOptional)
-
-if let json = jsonOptional as? Dictionary<String, AnyObject> {
-    if let id = json["id"] as? Int {
-        if let name = json["name"] as AnyObject? as? String {
-            if let email = json["email"] as AnyObject? as? String {
-                let user = User(id: id, name: name, email: email)
-                callback(user)
-            }
-        }
-    }
-}
-```
-😞
-
 For sane JSON parsing code we need to use third party
 libraries that implement type checking for us
 

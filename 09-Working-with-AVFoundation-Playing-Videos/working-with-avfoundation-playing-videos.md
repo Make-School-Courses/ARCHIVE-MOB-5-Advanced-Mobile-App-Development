@@ -115,6 +115,7 @@ addPeriodicTimeObserver(forInterval:queue:using:)
 You must pass in a serial queue, concurrent queues are not supported
 Use this to display, time elapsed, remaining
 
+
 There is also addBoundaryTimeObserver(forTimes:queue:using:) that runs a block when a defined time is crossed by the playback item
 
 ## AVPlayer Gotchas
