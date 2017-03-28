@@ -32,4 +32,4 @@ git clone <Your fork url>
             - APIClient
             - other networking related folders/files
     
-    # Next - [App Architecture](../02-App-Architecture/app-architecture.md)
+    # Next - [App Architecture](../02-App-Architecture/Readme.md)

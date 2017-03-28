@@ -88,8 +88,9 @@ Typically used for short lived relationships
 
 ## Notifications & NotificationCenter
 Notifications allow us to broadcast information (1 to N) 
-Sender has no information about which objects have subscribed to notifications
-This communication pattern is based of the Observer pattern.
+Sender has no information about which objects have subscribed to notifications.
+
+This communication pattern is based of the [Observer pattern](https://en.wikipedia.org/wiki/Observer_pattern) and Event Hub.
 In the observer pattern, we have an object called a **Subject**, this subject maintains a list of dependencies known as **Observers** which are notified when state changes.
 
 ### Posting a notification
@@ -121,6 +122,15 @@ class Listner {
 // Options 2
 NotificationCenter.default.addObserver(forName: PostNotification, object: nil, queue: nil) { (not) in
     print(not)
+}
+```
+
+**Note** Some notifications require an import to view notification
+Eg. To observe changes to AVPlayer, you need to import AVFoundation to see AVPlayer notification names
+
+```swift
+NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemTimeJumped, object: nil, queue: nil) { (not) in
+    
 }
 ```
 
@@ -164,6 +174,7 @@ class UserViewController: UIViewController {
     - Causes crashes if you forget to unregister
     - Can create dependencies between code that should not be
     coupled
+    - Similar problem with a singleton, you have a globally accessible object, anyone can listen to the notification
 
 
 ## Property Observers
@@ -291,4 +302,4 @@ Frameworks like **Bond, RxSwift, ReactiveCocoa** reduce communication into a sim
 
 [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa)
 
-# Next - [Networking Overview](../06-Networking-Overview/networking-overview.md)
+# Next - [Networking Overview](../06-Networking-Overview/Readme.md)

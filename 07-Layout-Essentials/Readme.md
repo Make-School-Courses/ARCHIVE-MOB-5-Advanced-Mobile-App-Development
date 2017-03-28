@@ -38,8 +38,8 @@ UITableView and UICollectionView use UIScrollView internally
 
 ## UITableView
 
-Use for list content, where amount of elements could be arbitrary large
-Ideal for uniform content
+Use for list content, where amount of elements could be arbitrary large.
+Ideal for uniform content.
 
 
 ## UICollectionView
@@ -53,7 +53,9 @@ Similar to UITableView but provides flexible, non-linear layout
 - Layout encapsulates logic for sizing and animating the cells
 
 
-## Summary
+## Discussion
+
+1. When should we use UITableView? UICollectionView or UIScrollView?
 
 
 # Next - [Persistence](../07-Persistence/persistence.md)

@@ -25,7 +25,7 @@ Key features:
 
 - #### Week 1
     - [Project Overview](01-Assigned-Project)
-    - [App Architecture](02-App-architecture)
+    - [App Architecture](02-App-Architecture)
     - [Dependency Management](03-Dependency-Management)
     - [Intro to persistence](04-Intro-to-Persistence)
  
