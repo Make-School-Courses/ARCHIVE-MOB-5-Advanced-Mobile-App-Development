@@ -215,7 +215,7 @@ Think: property observers for other objects
 To use KVO with swift you need to implement these steps:
 1. The Object you are going to observe needs to inherit from NSObject
 2. Add the dynamic keyword to the observed property
-3. The object observing property changes needs add itself to the list observers
+3. The object observing property changes needs to add itself to the list observers
 4. Override the observeValue(for:of:change:context:) method
 5. Remove the observer in deinit()
 
@@ -279,6 +279,8 @@ Frameworks like **Bond, RxSwift, ReactiveCocoa** reduce communication into a sim
 1. Building Whale, when will we use Delegation, Closures, NotificationCenter and KVO?
 2. What are some of the problems with using NotificationCenter to distribute information across our app?
 3. What is the main problem with using Closures in swift?
+4. What is the difference between delegates and protocols?
+
 
 ## Summary
 

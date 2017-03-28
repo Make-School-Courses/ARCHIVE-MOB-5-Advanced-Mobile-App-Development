@@ -37,7 +37,7 @@ Key features:
 - #### Week 3
     - [Layout Essentials](07-Layout-Essentials)
     - [Generics - Functions, Protocols & Enums](08-Generics)
-    - [Working with AVFoundation - Playing videos](09-Working-with-AVFoundation-Playing-Videos/working-with-avfoundation-playing-videos.md)
+    - [Working with AVFoundation - Playing videos](09-Working-with-AVFoundation-Playing-Videos)
 
 - #### Week 4
     - [Working with AVFoundation - Recording Videos](10-Working-with-AVFoundation-Recording-Videos/avfoundation-recording-videos.md)
