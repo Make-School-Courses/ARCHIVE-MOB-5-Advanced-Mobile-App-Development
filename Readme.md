@@ -40,7 +40,7 @@ Key features:
     - [Working with AVFoundation - Playing videos](09-Working-with-AVFoundation-Playing-Videos)
 
 - #### Week 4
-    - [Working with AVFoundation - Recording Videos](10-Working-with-AVFoundation-Recording-Videos/avfoundation-recording-videos.md)
+    - [Working with AVFoundation - Recording Videos](10-Working-with-AVFoundation-Recording-Videos)
     - [Persistence - Intro to Core Data](11-Persistence-Intro-to-Core-Data)
     
 - #### Week 5

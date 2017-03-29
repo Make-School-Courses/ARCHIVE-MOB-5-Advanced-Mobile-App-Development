@@ -94,7 +94,7 @@ Unfortunately throws has no type information
 ### Defining Swift Error types
 
 ```swift
-enum FileReadError: ErrorType {
+enum FileReadError: Error {
     case InvalidFilePath
     case InvalidEncoding
     case IncorrectFileFormat(actualFileFormat: String)
@@ -186,10 +186,10 @@ func handleSearchResult(result: Result<Predictions, Reason>) -> Void {
 
 ## Assertions & Exceptions
 
+### Exceptions
 Objective-C provides exceptions, Swift does not
 Objective-C exceptions should not be caught, they are not intended for error handling [1]
 Exceptions are used to crash the app to make you aware of a programming error
-
 
 ### Assertions
 
@@ -201,14 +201,12 @@ fatalError,…
 
 ![Assertions](assertions.png))
 
-### Exceptions
-
 
 ## Summary
 
-- Swift 2 uses ErrorType and throws for error handling
+- Swift uses Error and throws for error handling
 
-- Swift 2 error handling has limitations (no type info, not suitable for async code) - Result type is a good alternative
+- Swift error handling has limitations (no type info, not suitable for async code) - Result type is a good alternative
 
 - Exceptions and assertions are used for
 unrecoverable errors
