@@ -137,11 +137,20 @@ Errors don’t have type information
 Error handling doesn’t work for asynchronous code
 
 ```swift
-let request = NSURLRequest(URL: NSURL(string: "https://www.google.com")!)
-let session = NSURLSession.sharedSession()
+//1
+func fetchUser(completion: @escaping (User) -> Void) {
+    let request = URLRequest(url: URL(string: "https://www.google.com")!)
+    let session = URLSession.shared()
 
-session.dataTaskWithRequest(request) { (data, response, error) -> Void in
-// error handling happens in callback
+    session.dataTaskWithRequest(request) { (data, response, error) -> Void in
+    // error handling happens in callback
+    let user = //myUser
+        completion(user)
+    }
+}
+// 2
+func fetchUser(completion: (Void throws -> User) -> Void) {
+    
 }
 ```
 
@@ -188,7 +197,7 @@ func handleSearchResult(result: Result<Predictions, Reason>) -> Void {
 
 ### Exceptions
 Objective-C provides exceptions, Swift does not
-Objective-C exceptions should not be caught, they are not intended for error handling [1]
+Objective-C exceptions should not be caught, they are not intended for error handling
 Exceptions are used to crash the app to make you aware of a programming error
 
 ### Assertions

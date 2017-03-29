@@ -75,3 +75,7 @@ do {
 } catch {
     
 }
+
+func fetchUser(completion: @escaping (User) -> Void) {
+    completion(User(name: "Eliel"))
+}
