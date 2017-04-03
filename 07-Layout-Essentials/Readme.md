@@ -60,6 +60,13 @@ This makes the content of the description expant to fill the remaining space in 
 
 This is when you want a view to resist being smaller that it's intrinsic content size.
 
+![Content Compression Resistence Priority](ccrp.png)
+
+Bold Label CCRP
+
+![Content Compression Resistence Priority Controls](ccrp-controls.png)
+
+
 ## UIStackView
 Layout mechanism similar to CSS Flexbox
 Better than manual Auto Layout for dynamic layouts
@@ -84,11 +91,13 @@ If all of your view in the UIStackView have the same CHP, Xcode will show an amb
 
 ![Fill Distribution](fill-dist.png)
 
-- StackView Control
+StackView Control
+
 ![Fill Distribution Control](fill-dist-control.png)
 
 
-- Banana Content Hugging Priority
+Banana Content Hugging Priority
+
 ![Fill Distribution Priority](fill-dist-priority.png)
 Banana has a CHP of 250, Apples and Oranges have 251
 
