@@ -38,6 +38,8 @@ Intrinsic content size is information that a view has about how big it should be
 An example is a UIImageView knows how big it should be based on the image it contains. 
 A UILabel knows what size it should be based on the text it contains.
 
+The intrinsic content size of an item serves as input to autolayout.
+
 ### Constraint Priority
 Constraints on both the horizontal and vertical axis have a priority attached to them(1000 initially).
 The constraint priorty determine how important a constraint is in relation to other constraints; 1000 is a required constaint where 100 is low priority.
@@ -65,6 +67,13 @@ This is when you want a view to resist being smaller that it's intrinsic content
 Bold Label CCRP
 
 ![Content Compression Resistence Priority Controls](ccrp-controls.png)
+
+## CHP vs. CCRP
+- You can define both either horizontally or vertically
+
+- Content Compression - View with lower priority loses and grows, views with higher priority shrink
+
+- Content Compression Resistence Priority - View with higher priority resists being shrunk, views with lower priority shrink first.
 
 
 ## UIStackView
