@@ -32,12 +32,12 @@ Key features:
 - #### Week 2
     - [Distributing Information](05-Distributing-Information)
     - [Error Handling](00-Error-Handling)
-    - [Networking Overview](06-Networking-Overview)
+<!--    - [Networking Overview](06-Networking-Overview)-->
     
 - #### Week 3
     - [Layout Essentials](07-Layout-Essentials)
-    - [Generics - Functions, Protocols & Enums](08-Generics)
     - [Working with AVFoundation - Playing videos](09-Working-with-AVFoundation-Playing-Videos)
+<!--    - [Generics - Functions, Protocols & Enums](08-Generics)-->
 
 - #### Week 4
     - [Working with AVFoundation - Recording Videos](10-Working-with-AVFoundation-Recording-Videos)
