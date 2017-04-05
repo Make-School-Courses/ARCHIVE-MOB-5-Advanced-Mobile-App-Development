@@ -24,6 +24,7 @@ There are two ways of displaying video onto the screen
 **AVPlayerLayer** - Use this if you are building a custom video player interface
 
 If you use the AVPlayerLayer, you will have to build playback controls yourself (play, pause, seek)
+
 The layer can be set as the main backing layer of the view or added as a subview
 
 ```swift
@@ -43,6 +44,8 @@ self.layer is now an AVPlayerLayer
 
 ### Playing an Asset
 
+There are two types of assets you can play with AVPlayer, a local file, or stream based online assets.
+
 To play an asset, an AVPlayerItem is passed to the AVPlayer for playback
 
 ```swift
@@ -54,14 +57,24 @@ let avPlayer = AVPlayer(item: playerItem)
 }
 ```
 
-![AVPlayer](avplayer-player-items.png)
+![AVPlayer](avplayer-player-items2.png)
+
+#### VideoGravity
+This specifies the aspect ratio of the asset for playblack, use AVLayerVideoGravityResizeAspectFill if you want it to use the original aspect ratio of the asset
 
 ### Controlling playback
 
 Controlling playback of an asset is done by changing the playback rate.
 The playback rate controls the rate of play of the playeritem.
 Set the playback rate to 0 to pause, set it to 1 to play, setting it to 2 plays the item at twice the speed.
-You can also use the play() and pause() functions on AVPlayer, it changes the playback rate under the hood.
+You can also use the **play()** and **pause()** functions on AVPlayer, it changes the playback rate under the hood.
+
+#### Seeking
+You can move the playhead to a particular time in the asset with:
+
+```swift
+player.seek(to: kCMTimeZero)
+```
 
 
 ### Playing multiple items with AVQueuePlayer
@@ -71,14 +84,17 @@ Its a subclass of AVPlayer that allows you to play multiple items in sequence
 ```swift
 let playerItems = videoURLs.videos.map{AVPlayerItem(url: $0)}
 let queuePlayer = AVQueuePlayer(items: playerItems)
+
+// Move to next item in queue when done playing
+self.player.actionAtItemEnd = .advance
 ```
 
 AVQueuePlayer plays items in turn, if you want to move to the next item, use the advanceToNextItem() on AVQueuePlayer
 
 ### Looping a playback item with AVPlayerLooper
 
-AVPlayerLooper loops a playback item.
-You can do that manually by seeking the time to the beginning when the playback items ends, but AVPlayerLooper provides a better interface for looping an item
+AVPlayerLooper loops a single playback item.
+You can do that manually by seeking the time to the beginning when the playback items ends, but AVPlayerLooper provides a better interface for looping an item.
 
 
 ### Monitoring Playback
