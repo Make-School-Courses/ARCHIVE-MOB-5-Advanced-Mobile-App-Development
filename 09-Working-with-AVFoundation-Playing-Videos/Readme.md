@@ -50,7 +50,7 @@ To play an asset, an AVPlayerItem is passed to the AVPlayer for playback
 
 ```swift
 let playerItem = AVPlayerItem(url: URL(string: "some-url")!)
-let avPlayer = AVPlayer(item: playerItem)
+let avPlayer = AVPlayer(playerItem: playerItem)
 
 @IBAction func playPressed(_ sender: UIButton) {
     avPlayer.play()
@@ -110,7 +110,7 @@ override func observeValue(forKeyPath keyPath: String?, of object: Any?, change:
         if keyPath == "rate" {
             guard let newRate = change?[NSKeyValueChangeKey.newKey] as? NSNumber else {return}
             self.addTimeObserver()
-            
+
             if newRate.floatValue <= 0 {
                 removeTimeObserver()
                 delegate?.playerDidEnd()
@@ -122,7 +122,7 @@ override func observeValue(forKeyPath keyPath: String?, of object: Any?, change:
 
 AVPlayer provides two methods to observe time changes:
 
-To track the current time of the current playback item, you use the 
+To track the current time of the current playback item, you use the
 
 ```swift
 addPeriodicTimeObserver(forInterval:queue:using:)
