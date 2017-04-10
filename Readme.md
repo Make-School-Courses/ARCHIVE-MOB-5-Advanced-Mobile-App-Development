@@ -40,8 +40,9 @@ Key features:
 <!--    - [Generics - Functions, Protocols & Enums](08-Generics)-->
 
 - #### Week 4
-    - [Working with AVFoundation - Recording Videos](10-Working-with-AVFoundation-Recording-Videos)
-    - [Persistence - Intro to Core Data](11-Persistence-Intro-to-Core-Data)
+    - [Working with AVFoundation - Recording Video & Audio](10-Working-with-AVFoundation-Recording-Video-Audio)
+    - [Working with AVFoundation - Editing Video & Audio](11-Working-with-AVFoundation-Editing-Video-Audio)
+    - [Persistence - Intro to Core Data](12-Persistence-Intro-to-Core-Data)
     
 - #### Week 5
     - Project completion/ wrap-up
