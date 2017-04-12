@@ -12,6 +12,9 @@ A single session of AVCaptureSession can handle multiple inputs and outputs (you
 
 ![Capture session](avcapturesession.png)
 
+
+### Creating a capture session
+
 ```swift
 var captureSession = AVCaptureSession()
 ```
@@ -49,13 +52,13 @@ To capture audio/visual data, we need to add inputs from the camera and the micr
 
 #### Adding the camera as input to the capture session
 
-** (1) Start with creating a session.**
+**(1) Start with creating a session.**
 
 ```swift
 let session = AVCaptureSession()
 ```
 
-** (2) Then create your device for capture**
+**(2) Then create your device for capture**
 
 
 ```swift
@@ -66,14 +69,14 @@ let frontCamera = AVCaptureDevice.defaultDevice(
 )
 ```
 
-** (3) Create an input from the capture device**
+**(3) Create an input from the capture device**
 
 
 ```swift
 let cameraInput = try AVCaptureDeviceInput(device: frontCamera)
 ```
 
-** (4) Try adding the camera input to the capture session**
+**(4) Try adding the camera input to the capture session**
 
 ```swift
 if captureSession.canAddInput(input) {
@@ -136,19 +139,11 @@ deinit {
 }
 ```
 
-
-### Video Capture Preview
-
-To show a user a preview of the video capture, you will need to use a AVCaptureVideoPreviewLayer.
-
-You can set the preview layer's session to your instance of AVCaptureSession
-
-
 ## Discussion
 
-1. What are the inputs for this project?
-2. What are our outputs?
-3. Walk through the flow for capturing audio and video, displaying a preview, and preparing our video segments for processing
+1. What are the inputs and outputs for capturing and saving audio & video?
+2. How will we achieve recording video segments?
+3. How can we show a thumbnail preview of each video segment?
 
 
 ## Requesting Persmission before recording
