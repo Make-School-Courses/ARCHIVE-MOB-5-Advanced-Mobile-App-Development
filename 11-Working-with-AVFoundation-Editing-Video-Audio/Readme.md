@@ -111,6 +111,25 @@ You use this class to export an asset/composition to a desired format. Eg. .mov 
 
 After editing the video, you can pass your mixed composition(audio/ video composition tracks) to the export session for output.
 
+```swift
+let exporter = AVAssetExportSession(
+            asset: asset,
+            presetName: AVAssetExportPresetHighestQuality
+        )
+        
+exporter?.outputURL = storageURL
+    .appendingPathComponent(tempFileName)
+    .appendingPathExtension("mov")
+
+exporter?.outputFileType = AVFileTypeQuickTimeMovie
+exporter?.shouldOptimizeForNetworkUse = true
+
+exporter?.exportAsynchronously {
+    // Do something with file after export
+    // exporter?.outputURL
+}
+```
+
 ## Gotcha's
 
 - AVFoundation records video in landscape, even if you set the video orientation to potrait.
