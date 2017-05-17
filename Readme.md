@@ -48,6 +48,7 @@ Key features:
     - Project completion/ wrap-up
  
  ## Evaluations
+ 
 To pass the course, students will have:
 
     1. Finished the baseline features of the project

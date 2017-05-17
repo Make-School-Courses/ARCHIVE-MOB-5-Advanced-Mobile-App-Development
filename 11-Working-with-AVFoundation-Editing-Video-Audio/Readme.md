@@ -33,11 +33,11 @@ Provides you with an interface to allow you to make changes to the composition l
 
 Imagine using video editing software like Adobe After Effects or Quicktime's video editor.
 
-AVMutableCompositionTrack represent an (audio/video) asset to be edited.
+AVMutableCompositionTrack represents an (audio/video) asset to be edited.
 
 **Note**
 
-You will have to add both audio and video tracks for each asset inserted into the composition, inserting and video track does not automatically insert the audio associated with it!
+You will have to add both audio and video tracks for each asset inserted into the composition, inserting a video track does not automatically insert the audio associated with it!
 
 ## Creating a composition
 
@@ -58,7 +58,7 @@ let videoTrack = composition.addMutableTrack(
 
 ```swift
 let audioTrack = composition.addMutableTrack(
-    withMediaType: AVMediaTypeAudio, 
+    withMediaType: AVMediaTypeAudio,
     preferredTrackID: kCMPersistentTrackID_Invalid
 )
 ```
