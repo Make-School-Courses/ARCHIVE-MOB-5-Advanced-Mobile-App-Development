@@ -1,4 +1,4 @@
-# End-to-End iOS Development
+# Advanced iOS App Development
 
 ## Course Overview
 
@@ -27,22 +27,20 @@ Key features:
     - [Project Overview](01-Assigned-Project)
     - [App Architecture](02-App-Architecture)
     - [Dependency Management](03-Dependency-Management)
-    - [Intro to persistence](04-Intro-to-Persistence)
  
 - #### Week 2
     - [Distributing Information](05-Distributing-Information)
-    - [Error Handling](00-Error-Handling)
-<!--    - [Networking Overview](06-Networking-Overview)-->
+    - [Elegant Error Handling](00-Error-Handling)
+    - [Networking Overview](06-Networking-Overview)
     
 - #### Week 3
     - [Layout Essentials](07-Layout-Essentials)
     - [Working with AVFoundation - Playing videos](09-Working-with-AVFoundation-Playing-Videos)
-<!--    - [Generics - Functions, Protocols & Enums](08-Generics)-->
+    - [Generics - Functions, Protocols & Enums](08-Generics)
 
 - #### Week 4
     - [Working with AVFoundation - Recording Video & Audio](10-Working-with-AVFoundation-Recording-Video-Audio)
     - [Working with AVFoundation - Editing Video & Audio](11-Working-with-AVFoundation-Editing-Video-Audio)
-    - [Persistence - Intro to Core Data](12-Persistence-Intro-to-Core-Data)
     
 - #### Week 5
     - Project completion/ wrap-up
