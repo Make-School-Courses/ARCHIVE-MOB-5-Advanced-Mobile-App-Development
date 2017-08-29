@@ -4,12 +4,21 @@
 
 The goal of this class is to build a video Q&A app modeled after the Whale iOS App. We will focus on building only a subset of features of the Whale app, with a focus on **netwoking**, **architecture** and a bit of fun with video with **AVFoundation**. 
 
-## Objectives & Competencies
+## Objectives
 
-1. Build an iOS app from an API specification
-2. Use AVFoundation to play, record and save videos & photos
-3. Leverage advanced Swift features to architect your app
-4. Build common app features like networking, authentication, pagination
+- Leverage advanced Swift features to architect your app
+- Build common app features like networking, authentication, pagination
+
+## Competencies
+
+Students should be able to:
+
+- Use AVFoundation to play, record and save videos & photos
+- Build an iOS app from an API specification
+- Implement pagination in their projects
+- Implement authentication their projects
+
+
 
 ### Spec Project
 
