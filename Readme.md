@@ -1,4 +1,6 @@
-# Advanced iOS App Development
+# ARHIVE - Advanced iOS App Development
+
+## NOTE: This repo is no longer maintained
 
 ## Course Overview
 
